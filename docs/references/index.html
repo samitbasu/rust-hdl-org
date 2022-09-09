@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>References | RustHDL - Write FPGA Firmware using the Rust Programming Language! </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #FED43F;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+    }
+</style>
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;juice.css">
+    
+    
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;">
+    <div class="logo">
+        <img src="https:&#x2F;&#x2F;rust-hdl.org&#x2F;cuddlyferris.svg" alt="logo">
+        RustHDL
+    </div>
+</a>
+
+<nav>
+    
+    <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;references&#x2F;">References</a>
+    
+    <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;guide&#x2F;">The Guide</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;github.com&#x2F;samitbasu&#x2F;rust-hdl">Github</a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+        
+        
+        
+        
+        <div class="toc">
+            <div class="toc-sticky">
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/references/#references">References</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="content text">
+            
+<div class="heading-text"></div>
+<h1 id="references">References</h1>
+<p>RustHDL was inspired by and borrows from the following awesome projects!  They are listed in
+no particular order...</p>
+<ul>
+<li>LucidHDL is a very cool HDL developed by the folks over at <a href="https://www.alchitry.com">alchitry</a>.  I initially
+started writing tooling to manipulate Lucid using Rust, and then realized that it would be better for
+me to just use Rust itself.  But there is some great stuff on their website, and their book is excellent.</li>
+<li>AlchitryLabs is a n IDE from <a href="https://www.alchitry.com">alchitry</a> that supports the LucidHDL.  They open sourced 
+it and it is an impressive piece of software.</li>
+<li>For Python fans, <a href="https://rust-hdl.org/references/myhdl.org">MyHDL</a> is a Python based approach to generating HDL.  If you consider yourself a Python person, check it out.  After I left Verilog, I first rewrote a fair chunk of firmware using MyHDL and Python.  In the end, it wasn't for me, but many of the ideas are very cleanly expressed.</li>
+<li><em>The</em> open source toolchain that started it all is <a href="https://clifford.at/icestorm">IceStorm</a> Open Source tool chain for the <code>iCE 40</code> FPGA, and an incredibly powerful concept.  In particular, Claire's work demonstrated a software-like path for handling FPGAs that was critical to a number of open source FPGA-centric projects. </li>
+<li><a href="https://github.com/YosysHQ/yosys">YoSys</a> is the Verilog synthesis suite used by [RustHDL] to 
+process generated Verilog and check a design for potential errors (static analysis).</li>
+<li><a href="http://iverilog.icarus.com/">Icarus</a> is a verilog simulator that is software based, open source
+and easy to use.  Before [RustHDL] got it's own simulator, I would write and simulate everything
+using [Icarus].</li>
+<li><a href="https://www.veripool.org/verilator/">Verilator</a> I'd condsider this the professional option
+for simulation (particularly of super complicated designs).  [RustHDL] doesn't come anywhere near
+the simulation performance of [Verilator] yet, but the goal is to either generate Verilog that
+[Verilator] can process, or adopt the same types of techniques described by the author in this 
+<a href="https://veripool.org/papers/Verilator_Internals1_202010.pdf">paper</a>.</li>
+</ul>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+        <small class="subtext">
+            <a href="https://huhu.io">Huhu.io</a> © 2021
+        </small>
+    </footer>
+    
+</body>
+<script>
+    function highlightNav(heading) {
+        let pathname = location.pathname;
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+        document.querySelector(".toc a[href$='" + pathname + "#" + heading + "']").classList.add("active");
+    }
+
+    let currentHeading = "";
+    window.onscroll = function () {
+        let h = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let elementArr = [];
+
+        h.forEach(item => {
+            if (item.id !== "") {
+                elementArr[item.id] = item.getBoundingClientRect().top;
+            }
+        });
+        elementArr.sort();
+        for (let key in elementArr) {
+            if (!elementArr.hasOwnProperty(key)) {
+                continue;
+            }
+            if (elementArr[key] > 0 && elementArr[key] < 300) {
+                if (currentHeading !== key) {
+                    highlightNav(key);
+                    currentHeading = key;
+                }
+                break;
+            }
+        }
+    }
+</script>
+
+</html>
