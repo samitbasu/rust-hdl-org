@@ -1,2 +1,2 @@
 User-agent: *
-Sitemap: samitbasu.github.io/rust-hdl-org/sitemap.xml
+Sitemap: https://samitbasu.github.io/rust-hdl-org/sitemap.xml
