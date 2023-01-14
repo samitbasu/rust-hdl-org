@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>http://rust-hdl.org/</loc>
+        <loc>https://rust-hdl.org/</loc>
     </url>
     <url>
-        <loc>http://rust-hdl.org/guide/</loc>
+        <loc>https://rust-hdl.org/guide/</loc>
     </url>
     <url>
-        <loc>http://rust-hdl.org/references/</loc>
+        <loc>https://rust-hdl.org/references/</loc>
     </url>
 </urlset>

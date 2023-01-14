@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 Allow: /
-Sitemap: http://rust-hdl.org/sitemap.xml
+Sitemap: https://rust-hdl.org/sitemap.xml

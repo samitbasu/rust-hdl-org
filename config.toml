@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "http://rust-hdl.org"
+base_url = "https://rust-hdl.org"
 
 title = "RustHDL - Write FPGA Firmware using the Rust Programming Language!"
 
