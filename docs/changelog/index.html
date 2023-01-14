@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/normalize.css">
-    <link rel="stylesheet" href="https://rust-hdl.org/juice.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;juice.css">
     
     
 </head>
@@ -39,7 +39,7 @@
 
 <a href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;">
     <div class="logo">
-        <img src="https://rust-hdl.org/pcbferris.svg" alt="logo">
+        <img src="https:&#x2F;&#x2F;rust-hdl.org&#x2F;pcbferris.svg" alt="logo">
         RustHDL
     </div>
 </a>
@@ -72,32 +72,72 @@
             <div class="toc-sticky">
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-43-0-2023-jan-7">v0.43.0 - 2023-Jan-7</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-43-0">v0.43.0</a>
                 </div>
                 
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-42-0-2023-jan-2">v0.42.0 - 2023-Jan-2</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-42-0">v0.42.0</a>
                 </div>
                 
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-41-0-2022-dec-2">v0.41.0 - 2022-Dec-2</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-41-0">v0.41.0</a>
                 </div>
                 
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-40-0-2022-dec-2">v0.40.0 - 2022-Dec-2</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-40-0">v0.40.0</a>
                 </div>
                 
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-39-0-2022-nov-30">v0.39.0 - 2022-Nov-30</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-39-0">v0.39.0</a>
                 </div>
                 
                 
                 <div class="toc-item">
-                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-38-0-2022-sep-14">v0.38.0 - 2022-Sep-14</a>
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-38-0">v0.38.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-37-1">v0.37.1</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-37-0">v0.37.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-36-0">v0.36.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-35-1">v0.35.1</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-35-0">v0.35.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-34-0">v0.34.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-33-0">v0.33.0</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#older-versions">Older versions</a>
                 </div>
                 
                 
@@ -109,79 +149,121 @@
         <div class="content text">
             
 <div class="heading-text">Changelog</div>
-<h1 id="v0-43-0-2023-jan-7">v0.43.0 - 2023-Jan-7</h1>
+<h1 id="v0-43-0">v0.43.0</h1>
 <ul>
 <li>Add support for right and left shifts by different bit width amounts.  For example,
 the following construct used to not be allowed, since RustHDL would insist that the
 two arguments to both the left and right shift operators be the same bitwidth.</li>
 </ul>
-<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicBlock)]
-struct Foo {
-    pub sig1: Signal&lt;In, Bits&lt;4&gt;&gt;,
-    pub sig2: Signal&lt;In, Bits&lt;2&gt;&gt;,
-    pub sig3: Signal&lt;Out, Bits&lt;4&gt;&gt;,
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">#[derive(LogicBlock)]
+</span><span style="font-weight:bold;color:#a71d5d;">struct </span><span style="color:#323232;">Foo {
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig1: Signal&lt;In, Bits&lt;4&gt;&gt;,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig2: Signal&lt;In, Bits&lt;2&gt;&gt;,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig3: Signal&lt;Out, Bits&lt;4&gt;&gt;,
 }
 
-impl Logic for Foo {
+</span><span style="font-weight:bold;color:#a71d5d;">impl </span><span style="color:#323232;">Logic </span><span style="font-weight:bold;color:#a71d5d;">for </span><span style="color:#323232;">Foo {
     #[hdl_gen]
-    fn update(&amp;mut self) {
-        self.sig3.next = self.sig1.val() &lt;&lt; self.sig2.val(); &#x2F;&#x2F; &lt;-- used to require a bitcast - now it doesn&#x27;t
-    }
+    </span><span style="font-weight:bold;color:#a71d5d;">fn </span><span style="font-weight:bold;color:#795da3;">update</span><span style="color:#323232;">(</span><span style="font-weight:bold;color:#a71d5d;">&amp;mut </span><span style="color:#323232;">self) {
+        self.sig3.next </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">self.sig1.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">() </span><span style="font-weight:bold;color:#a71d5d;">&lt;&lt; </span><span style="color:#323232;">self.sig2.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">(); </span><span style="font-style:italic;color:#969896;">// &lt;-- used to require a bitcast - now it doesn&#39;t
+    </span><span style="color:#323232;">}
 }
-</code></pre>
-<h1 id="v0-42-0-2023-jan-2">v0.42.0 - 2023-Jan-2</h1>
+</span></code></pre><h1 id="v0-42-0">v0.42.0</h1>
 <ul>
 <li>Support for comparison operations on signed arguments.  Support for signed quantities is
 still improving in RustHDL.  Now you can do:</li>
 </ul>
-<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicBlock)]
-struct Foo {
-    pub sig1: Signal&lt;In, Signed&lt;4&gt;&gt;,
-    pub sig2: Signal&lt;In, Signed&lt;4&gt;&gt;,
-    pub sig3: Signal&lt;Out, Bit&gt;,
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">#[derive(LogicBlock)]
+</span><span style="font-weight:bold;color:#a71d5d;">struct </span><span style="color:#323232;">Foo {
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig1: Signal&lt;In, Signed&lt;4&gt;&gt;,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig2: Signal&lt;In, Signed&lt;4&gt;&gt;,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sig3: Signal&lt;Out, Bit&gt;,
 }
 
-impl Logic for Foo {
+</span><span style="font-weight:bold;color:#a71d5d;">impl </span><span style="color:#323232;">Logic </span><span style="font-weight:bold;color:#a71d5d;">for </span><span style="color:#323232;">Foo {
     #[hdl_gen]
-    fn update(&amp;mut self) {
-        self.sig3.next = self.sig1.val() &lt; self.sig2.val(); &#x2F;&#x2F; &lt;-- used to not work at all.  Now it works
-    }
+    </span><span style="font-weight:bold;color:#a71d5d;">fn </span><span style="font-weight:bold;color:#795da3;">update</span><span style="color:#323232;">(</span><span style="font-weight:bold;color:#a71d5d;">&amp;mut </span><span style="color:#323232;">self) {
+        self.sig3.next </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">self.sig1.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">() </span><span style="font-weight:bold;color:#a71d5d;">&lt; </span><span style="color:#323232;">self.sig2.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">(); </span><span style="font-style:italic;color:#969896;">// &lt;-- used to not work at all.  Now it works
+    </span><span style="color:#323232;">}
 }
-</code></pre>
+</span></code></pre>
 <p>The generated Verilog should have the proper <code>$signed</code> and <code>$unsigned</code> decorations, but it's good to double
 check the output to make sure it looks reasonable.</p>
-<h1 id="v0-41-0-2022-dec-2">v0.41.0 - 2022-Dec-2</h1>
+<h1 id="v0-41-0">v0.41.0</h1>
 <p>No changes.</p>
-<h1 id="v0-40-0-2022-dec-2">v0.40.0 - 2022-Dec-2</h1>
+<h1 id="v0-40-0">v0.40.0</h1>
 <ul>
 <li>Refactored the I2C bus to make it slightly easier to use.  Now the bus looks like this:</li>
 </ul>
-<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicInterface, Default)]
-#[join = &quot;I2CBusReceiver&quot;]
-pub struct I2CBusDriver {
-    pub sda: OpenDrainDriver,
-    pub scl: OpenDrainDriver,
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">#[derive(LogicInterface, Default)]
+#[join </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#183691;">&quot;I2CBusReceiver&quot;</span><span style="color:#323232;">]
+</span><span style="font-weight:bold;color:#a71d5d;">pub struct </span><span style="color:#323232;">I2CBusDriver {
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">sda: OpenDrainDriver,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">scl: OpenDrainDriver,
 }
-</code></pre>
+</span></code></pre>
 <p>The <code>OpenDrainDriver</code> is also a bus definition:</p>
-<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicInterface, Default)]
-#[join = &quot;OpenDrainReceiver&quot;]
-pub struct OpenDrainDriver {
-    pub drive_low: Signal&lt;Out, Bit&gt;,
-    pub line_state: Signal&lt;In, Bit&gt;,
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">#[derive(LogicInterface, Default)]
+#[join </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#183691;">&quot;OpenDrainReceiver&quot;</span><span style="color:#323232;">]
+</span><span style="font-weight:bold;color:#a71d5d;">pub struct </span><span style="color:#323232;">OpenDrainDriver {
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">drive_low: Signal&lt;Out, Bit&gt;,
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">line_state: Signal&lt;In, Bit&gt;,
 }
-</code></pre>
+</span></code></pre>
 <p>This constrains (through the types) the operations that can be legally completed on an open drain pin.</p>
-<h1 id="v0-39-0-2022-nov-30">v0.39.0 - 2022-Nov-30</h1>
+<h1 id="v0-39-0">v0.39.0</h1>
 <ul>
 <li>There are some issues with synthesis tools that do not properly route analog signals into the design (no names...)
 So to be safe you should move your tristate buffers as close to the top of your design hierarchy as possible.<br />
 This release removed the I2C tristate buffers from the controller and moved them out.</li>
 </ul>
-<h1 id="v0-38-0-2022-sep-14">v0.38.0 - 2022-Sep-14</h1>
+<h1 id="v0-38-0">v0.38.0</h1>
 <ul>
 <li>Clean up some of the doc tests, and remove some debug statements.  Update the homepage in the Cargo manifest to 
 point to the <a href="https://www.rust-hdl.org">website</a>.</li>
+</ul>
+<h1 id="v0-37-1">v0.37.1</h1>
+<ul>
+<li>Removed the <code>yosys</code>-based input-write detection, which erroneously flagged a legitimate case
+involving a tristate signal.</li>
+</ul>
+<h1 id="v0-37-0">v0.37.0</h1>
+<ul>
+<li>Updated the simualted ADS8688 to be closer to the behavior described in the datasheet.</li>
+</ul>
+<h1 id="v0-36-0">v0.36.0</h1>
+<ul>
+<li>Documentation improvements.</li>
+<li>Add logic to the analysis pass to look for writes to the input signals.</li>
+</ul>
+<h1 id="v0-35-1">v0.35.1</h1>
+<ul>
+<li>Added some additional tests for SPI modes.</li>
+</ul>
+<h1 id="v0-35-0">v0.35.0</h1>
+<ul>
+<li>Added the simulated ADS8688 chip.</li>
+</ul>
+<h1 id="v0-34-0">v0.34.0</h1>
+<ul>
+<li>No new features - Manifest fixup.</li>
+</ul>
+<h1 id="v0-33-0">v0.33.0</h1>
+<ul>
+<li>Fix XEM6010 support</li>
+<li>Crate cleanup</li>
+<li>Split the test code back out put the BSPs back into their own crates.</li>
+<li>Update the itnegration tests for the Alchitry Cu</li>
+<li>Moved the toolchain files to the <code>fpga-support</code> crate.</li>
+</ul>
+<h1 id="older-versions">Older versions</h1>
+<ul>
+<li>Unfortunately, previous releases were not done with the <code>cargo release</code> tool</li>
+<li>So I can't correlate the releases to the precise commits easily.</li>
 </ul>
 
 

@@ -4,11 +4,11 @@
 <svg
    version="1.1"
    id="svg1061"
-   width="184.62245"
-   height="137.43959"
-   viewBox="0 0 184.62246 137.4396"
-   sodipodi:docname="cyber-ferris.svg"
-   inkscape:version="1.2.2 (b0a8486, 2022-12-01)"
+   width="286.9631"
+   height="286.9631"
+   viewBox="0 0 286.96312 286.96312"
+   sodipodi:docname="pcbferris.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -33,11 +33,11 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      showgrid="false"
-     inkscape:zoom="0.65775006"
-     inkscape:cx="284.30252"
-     inkscape:cy="50.171033"
-     inkscape:window-width="1419"
-     inkscape:window-height="952"
+     inkscape:zoom="2.6310002"
+     inkscape:cx="91.980227"
+     inkscape:cy="110.41428"
+     inkscape:window-width="2009"
+     inkscape:window-height="1512"
      inkscape:window-x="388"
      inkscape:window-y="65"
      inkscape:window-maximized="0"
@@ -46,17 +46,25 @@
        x="0"
        y="0"
        id="page1067"
-       width="184.62247"
-       height="137.43961" />
+       width="286.96313"
+       height="286.96313" />
   </sodipodi:namedview>
   <g
      id="g1069"
      inkscape:groupmode="layer"
      inkscape:label="Page 1"
-     transform="matrix(1.3333333,0,0,-1.3333333,-296.43926,717.14224)">
+     transform="matrix(1.3333333,0,0,-1.3333333,-245.50806,785.17722)">
+    <circle
+       style="display:inline;fill:#ffffff;stroke-width:1.09315"
+       id="path224"
+       cx="291.74222"
+       cy="-481.27176"
+       r="107.61117"
+       transform="scale(1,-1)"
+       inkscape:label="path224" />
     <g
        id="g1071"
-       transform="translate(-46.750282,-13.683009)">
+       transform="translate(-46.750284,-13.683008)">
       <g
          id="g1073"
          clip-path="url(#clipPath1077)">

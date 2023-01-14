@@ -27,7 +27,7 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/normalize.css">
-    <link rel="stylesheet" href="https://rust-hdl.org/juice.css">
+    <link rel="stylesheet" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;juice.css">
     
     
 </head>
@@ -40,7 +40,7 @@
 
 <a href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;">
     <div class="logo">
-        <img src="https://rust-hdl.org/pcbferris.svg" alt="logo">
+        <img src="https:&#x2F;&#x2F;rust-hdl.org&#x2F;pcbferris.svg" alt="logo">
         RustHDL
     </div>
 </a>
@@ -80,7 +80,7 @@
                     data-show-count="true" aria-label="Fork RustHDL on GitHub">Fork</a>
             </div>
         </section>
-        <!-- <img class="hero-image" style="width: 50%" src="https://rust-hdl.org/hero.png"> -->
+        <!-- <img class="hero-image" style="width: 50%" src="https:&#x2F;&#x2F;rust-hdl.org&#x2F;hero.png"> -->
 
         <div class="explore-more text"
             onclick="document.getElementById('features').scrollIntoView({behavior: 'smooth'})">
@@ -136,6 +136,11 @@
                 
                 
                 <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/#roadmap">Roadmap</a>
+                </div>
+                
+                
+                <div class="toc-item">
                     <a class="subtext" href="https://rust-hdl.org/#references">References</a>
                 </div>
                 
@@ -175,74 +180,77 @@ and take advantage of specialized hardware in the FPGAs themselves 🦑.</li>
 work through that first.  You don't need to be a Rust Wizard 🪄 to write firmware using RustHDL.  But I assume you know
 the basics.</p>
 <p>To add <code>rust-hdl</code> to your project, simply create a new project and then add <code>rust-hdl</code> as a dependency:</p>
-<pre data-lang="shell" class="language-shell "><code class="language-shell" data-lang="shell">samitbasu@fedora jnk]$ cargo new testme
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">samitbasu@fedora jnk]$ cargo new testme
      Created binary (application) `testme` package
 [samitbasu@fedora jnk]$ cd testme
 [samitbasu@fedora testme]$ cargo add rust-hdl
     Updating crates.io index
       Adding rust-hdl v0.38.2 to dependencies.
 [samitbasu@fedora testme]$ 
-</code></pre>
+</span></code></pre>
 <p>To get the most benefit from <code>rust-hdl</code> you should probably 
 install <a href="https://github.com/YosysHQ/yosys">yosys</a>.
 <code>Yosys</code> provides more sophisticated checking on the generated Verilog and it also provides some
 synthesis pathways for some of the more open-source friendly FPGAs.</p>
 <p>Then replace <code>main.rs</code> with the following.</p>
-<pre data-lang="rs" class="language-rs "><code class="language-rs" data-lang="rs">use std::time::Duration;
-use rust_hdl::prelude::*;
+<pre style="background-color:#ffffff;">
+<code><span style="font-weight:bold;color:#a71d5d;">use </span><span style="color:#323232;">std::time::Duration;
+</span><span style="font-weight:bold;color:#a71d5d;">use </span><span style="color:#323232;">rust_hdl::prelude::</span><span style="font-weight:bold;color:#a71d5d;">*</span><span style="color:#323232;">;
 
-const CLOCK_SPEED_HZ : u64 = 10_000;
+</span><span style="font-weight:bold;color:#a71d5d;">const </span><span style="color:#0086b3;">CLOCK_SPEED_HZ </span><span style="color:#323232;">: </span><span style="font-weight:bold;color:#a71d5d;">u64 = </span><span style="color:#0086b3;">10_000</span><span style="color:#323232;">;
 
-#[derive(LogicBlock)]  &#x2F;&#x2F; &lt;- This turns the struct into something you can simulate&#x2F;synthesize
-struct Blinky {
-    pub clock: Signal&lt;In, Clock&gt;, &#x2F;&#x2F; &lt;- input signal, type is clock
-    pulser: Pulser,               &#x2F;&#x2F; &lt;- sub-circuit, a widget that generates pulses
-    pub led: Signal&lt;Out, Bit&gt;,    &#x2F;&#x2F; &lt;- output signal, type is single bit
-}
+#[derive(LogicBlock)]  </span><span style="font-style:italic;color:#969896;">// &lt;- This turns the struct into something you can simulate/synthesize
+</span><span style="font-weight:bold;color:#a71d5d;">struct </span><span style="color:#323232;">Blinky {
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">clock: Signal&lt;In, Clock&gt;, </span><span style="font-style:italic;color:#969896;">// &lt;- input signal, type is clock
+    </span><span style="color:#323232;">pulser: Pulser,               </span><span style="font-style:italic;color:#969896;">// &lt;- sub-circuit, a widget that generates pulses
+    </span><span style="font-weight:bold;color:#a71d5d;">pub </span><span style="color:#323232;">led: Signal&lt;Out, Bit&gt;,    </span><span style="font-style:italic;color:#969896;">// &lt;- output signal, type is single bit
+</span><span style="color:#323232;">}
 
-impl Default for Blinky {
-   fn default() -&gt; Self {
-       Self {
-         clock: Default::default(),
-         pulser: Pulser::new(CLOCK_SPEED_HZ, 1.0, Duration::from_millis(250)),
-         led: Default::default(),
+</span><span style="font-weight:bold;color:#a71d5d;">impl </span><span style="color:#323232;">Default </span><span style="font-weight:bold;color:#a71d5d;">for </span><span style="color:#323232;">Blinky {
+   </span><span style="font-weight:bold;color:#a71d5d;">fn </span><span style="font-weight:bold;color:#795da3;">default</span><span style="color:#323232;">() -&gt; </span><span style="font-weight:bold;color:#a71d5d;">Self </span><span style="color:#323232;">{
+       </span><span style="font-weight:bold;color:#a71d5d;">Self </span><span style="color:#323232;">{
+         clock: </span><span style="color:#0086b3;">Default</span><span style="color:#323232;">::default(),
+         pulser: Pulser::new(</span><span style="color:#0086b3;">CLOCK_SPEED_HZ</span><span style="color:#323232;">, </span><span style="color:#0086b3;">1.0</span><span style="color:#323232;">, Duration::from_millis(</span><span style="color:#0086b3;">250</span><span style="color:#323232;">)),
+         led: </span><span style="color:#0086b3;">Default</span><span style="color:#323232;">::default(),
        }
     }
 }
 
-impl Logic for Blinky {
-    #[hdl_gen] &#x2F;&#x2F; &lt;- this turns the update function into an HDL Kernel that can be turned into Verilog
-    fn update(&amp;mut self) {
-       &#x2F;&#x2F; v-- write to the .next member     v-- read from .val() method
-       self.pulser.clock.next = self.clock.val();
-       self.pulser.enable.next = true.into();
-       self.led.next = self.pulser.pulse.val();
+</span><span style="font-weight:bold;color:#a71d5d;">impl </span><span style="color:#323232;">Logic </span><span style="font-weight:bold;color:#a71d5d;">for </span><span style="color:#323232;">Blinky {
+    #[hdl_gen] </span><span style="font-style:italic;color:#969896;">// &lt;- this turns the update function into an HDL Kernel that can be turned into Verilog
+    </span><span style="font-weight:bold;color:#a71d5d;">fn </span><span style="font-weight:bold;color:#795da3;">update</span><span style="color:#323232;">(</span><span style="font-weight:bold;color:#a71d5d;">&amp;mut </span><span style="color:#323232;">self) {
+       </span><span style="font-style:italic;color:#969896;">// v-- write to the .next member     v-- read from .val() method
+       </span><span style="color:#323232;">self.pulser.clock.next </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">self.clock.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">();
+       self.pulser.enable.next </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#0086b3;">true</span><span style="color:#323232;">.</span><span style="color:#62a35c;">into</span><span style="color:#323232;">();
+       self.led.next </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">self.pulser.pulse.</span><span style="color:#62a35c;">val</span><span style="color:#323232;">();
     }
 }
 
-fn main() {
-    &#x2F;&#x2F; v--- build a simple simulation (1 testbench, single clock)
-    let mut sim = simple_sim!(Blinky, clock, CLOCK_SPEED_HZ, ep, {
-        let mut x = ep.init()?;
-        wait_clock_cycles!(ep, clock, x, 4*CLOCK_SPEED_HZ);
-        ep.done(x)
+</span><span style="font-weight:bold;color:#a71d5d;">fn </span><span style="font-weight:bold;color:#795da3;">main</span><span style="color:#323232;">() {
+    </span><span style="font-style:italic;color:#969896;">// v--- build a simple simulation (1 testbench, single clock)
+    </span><span style="font-weight:bold;color:#a71d5d;">let mut</span><span style="color:#323232;"> sim </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">simple_sim!(Blinky, clock, </span><span style="color:#0086b3;">CLOCK_SPEED_HZ</span><span style="color:#323232;">, ep, {
+        </span><span style="font-weight:bold;color:#a71d5d;">let mut</span><span style="color:#323232;"> x </span><span style="font-weight:bold;color:#a71d5d;">=</span><span style="color:#323232;"> ep.</span><span style="color:#62a35c;">init</span><span style="color:#323232;">()</span><span style="font-weight:bold;color:#a71d5d;">?</span><span style="color:#323232;">;
+        wait_clock_cycles!(ep, clock, x, </span><span style="color:#0086b3;">4</span><span style="font-weight:bold;color:#a71d5d;">*</span><span style="color:#0086b3;">CLOCK_SPEED_HZ</span><span style="color:#323232;">);
+        ep.</span><span style="color:#62a35c;">done</span><span style="color:#323232;">(x)
     });
 
-    &#x2F;&#x2F; v--- construct the circuit
-    let uut = Blinky::default();
-    &#x2F;&#x2F; v--- run the simulation, with the output traced to a .vcd file
-    sim.run_to_file(Box::new(uut), 5 * sim_time::ONE_SEC, &quot;blinky.vcd&quot;).unwrap();
-    vcd_to_svg(&quot;blinky.vcd&quot;,&quot;blinky_all.svg&quot;,&amp;[&quot;uut.clock&quot;, &quot;uut.led&quot;], 0, 4 * sim_time::ONE_SEC).unwrap();
-    vcd_to_svg(&quot;blinky.vcd&quot;,&quot;blinky_pulse.svg&quot;,&amp;[&quot;uut.clock&quot;, &quot;uut.led&quot;], 900 * sim_time::ONE_MILLISECOND, 1500 * sim_time::ONE_MILLISECOND).unwrap();
+    </span><span style="font-style:italic;color:#969896;">// v--- construct the circuit
+    </span><span style="font-weight:bold;color:#a71d5d;">let</span><span style="color:#323232;"> uut </span><span style="font-weight:bold;color:#a71d5d;">= </span><span style="color:#323232;">Blinky::default();
+    </span><span style="font-style:italic;color:#969896;">// v--- run the simulation, with the output traced to a .vcd file
+</span><span style="color:#323232;">    sim.</span><span style="color:#62a35c;">run_to_file</span><span style="color:#323232;">(</span><span style="color:#0086b3;">Box</span><span style="color:#323232;">::new(uut), </span><span style="color:#0086b3;">5 </span><span style="font-weight:bold;color:#a71d5d;">* </span><span style="color:#323232;">sim_time::</span><span style="color:#0086b3;">ONE_SEC</span><span style="color:#323232;">, </span><span style="color:#183691;">&quot;blinky.vcd&quot;</span><span style="color:#323232;">).</span><span style="color:#62a35c;">unwrap</span><span style="color:#323232;">();
+    </span><span style="color:#62a35c;">vcd_to_svg</span><span style="color:#323232;">(</span><span style="color:#183691;">&quot;blinky.vcd&quot;</span><span style="color:#323232;">,</span><span style="color:#183691;">&quot;blinky_all.svg&quot;</span><span style="color:#323232;">,</span><span style="font-weight:bold;color:#a71d5d;">&amp;</span><span style="color:#323232;">[</span><span style="color:#183691;">&quot;uut.clock&quot;</span><span style="color:#323232;">, </span><span style="color:#183691;">&quot;uut.led&quot;</span><span style="color:#323232;">], </span><span style="color:#0086b3;">0</span><span style="color:#323232;">, </span><span style="color:#0086b3;">4 </span><span style="font-weight:bold;color:#a71d5d;">* </span><span style="color:#323232;">sim_time::</span><span style="color:#0086b3;">ONE_SEC</span><span style="color:#323232;">).</span><span style="color:#62a35c;">unwrap</span><span style="color:#323232;">();
+    </span><span style="color:#62a35c;">vcd_to_svg</span><span style="color:#323232;">(</span><span style="color:#183691;">&quot;blinky.vcd&quot;</span><span style="color:#323232;">,</span><span style="color:#183691;">&quot;blinky_pulse.svg&quot;</span><span style="color:#323232;">,</span><span style="font-weight:bold;color:#a71d5d;">&amp;</span><span style="color:#323232;">[</span><span style="color:#183691;">&quot;uut.clock&quot;</span><span style="color:#323232;">, </span><span style="color:#183691;">&quot;uut.led&quot;</span><span style="color:#323232;">], </span><span style="color:#0086b3;">900 </span><span style="font-weight:bold;color:#a71d5d;">* </span><span style="color:#323232;">sim_time::</span><span style="color:#0086b3;">ONE_MILLISECOND</span><span style="color:#323232;">, </span><span style="color:#0086b3;">1500 </span><span style="font-weight:bold;color:#a71d5d;">* </span><span style="color:#323232;">sim_time::</span><span style="color:#0086b3;">ONE_MILLISECOND</span><span style="color:#323232;">).</span><span style="color:#62a35c;">unwrap</span><span style="color:#323232;">();
 }
-</code></pre>
+</span></code></pre>
 <p>Finally, run this simulation</p>
-<pre data-lang="shell" class="language-shell "><code class="language-shell" data-lang="shell">[samitbasu@fedora testme]$ cargo run --release
-   Compiling testme v0.1.0 (&#x2F;home&#x2F;samitbasu&#x2F;Devel&#x2F;jnk&#x2F;testme)
+<pre style="background-color:#ffffff;">
+<code><span style="color:#323232;">[samitbasu@fedora testme]$ cargo run --release
+   Compiling testme v0.1.0 (/home/samitbasu/Devel/jnk/testme)
     Finished release [optimized] target(s) in 0.92s
-     Running `target&#x2F;release&#x2F;testme`
+     Running `target/release/testme`
 [samitbasu@fedora testme]$ 
-</code></pre>
+</span></code></pre>
 <p>You should now have a <code>vcd</code> file that can be viewed with a tool like <a href="http://gtkwave.sourceforge.net/">gtkwave</a>.  Alternately, RustHDL 
 includes the ability to generate an <code>svg</code> file from the <code>vcd</code> file.
 This is the end result showing the entire simulation:
@@ -257,6 +265,76 @@ Here is a zoom in showing the pulse to the LED
 </ul>
 <h1 id="change-log">Change Log</h1>
 <p>You can go to the <a href="https://rust-hdl.org/changelog/">changelog</a> page to see what changes are happening.</p>
+<h1 id="roadmap">Roadmap</h1>
+<p>It's difficult to generate an accurate roadmap for a project like RustHDL, given that it's not sponsored and so vast in scope.
+Nonetheless, here is the current set of milestones/priorities:</p>
+<ul>
+<li>Documentation!  The surface area of RustHDL is large, and it needs tons of documentation.  This is the main goal for the forseable future.
+<ul>
+<li>The crates need to be reorganized.  I originally had a series of smaller crates, but that gets to be a pain during development.  Now that things
+have mostly stabilized, smaller crates lead to faster compile times, and a better feature-controlled user experience.</li>
+<li>Macros need to be documented, like <code>dff_setup</code>.</li>
+</ul>
+</li>
+<li>Tutorials on the BSPs and using Hardware.  While its fun to play with simulations, the real hardware is generally more <del>frustrating</del> satisfying.
+I have the following boards on hand (or used to), so I can do a basic tutorial on each of these as I go.
+<ul>
+<li>Alchitry Cu - this is an inexpensive ICE40-based board that can be programmed using only open source tools.  Probably one of the least expensive
+ways to get started.  I have a few of these, and I'd like to use them as the primary platform for the simple examples.</li>
+<li>Alchitry Au - this is far more powerful, and includes the DDR and an Artix-7 FPGA.  You need to use commercial toolchains for this, but it's
+still reasonably priced for an FPGA board.</li>
+<li>Orange Crab - this is a fun board based on the Lattice ECP5, and includes a LPDDR and a super-small form factor.  It can also be targetted with
+open source tools.</li>
+<li><a href="https://rust-hdl.org/www.opalkelly.com">OpalKelly</a> XEM6010 - an oldie, but great FPGA SOM based on the workhorse Spartan-6 from Xilinx.  The toolchain is way deprecated.
+I think this thing is great, but you can't get it anymore.  So...</li>
+<li><a href="https://rust-hdl.org/www.opalkelly.com">OpalKelly</a> XEM7010 - the modern version of the XEM6010.  Includes an Artix-7 and DDR.  RustHDL wraps the <code>FrontPanel</code> API to
+make working with OpalKelly modules easier to use.</li>
+<li>Lattice ECP5 development board</li>
+<li>More...?</li>
+</ul>
+</li>
+<li>Analysis
+<ul>
+<li>I have the start of a timing analysis module in process in RustHDL.  I would like to finish it.  It constructs a full dataflow analysis of your
+design, and then looks for unprotected time-domain crossings.</li>
+</ul>
+</li>
+<li>Make a <code>1.0.0</code> release.  This will be an official release, and then breaking changes will become more painful.  So it needs to be done
+when there is a significant stability in the design.  I do not intend to make any substantial changes before releasing <code>1.0.0</code>.  Just documentation
+and tweaks to improve usability.</li>
+<li>Future releases will focus on a richer set of widgets and more analytics.</li>
+<li>DSP blocks
+<ul>
+<li>FFT - at the least a basic decimation-in-time FFT engine written in RustHDL</li>
+<li>CORDIC - arctangent's in hardware, baby!</li>
+<li>FIR filters - I have one now, but it doesn't really synthesize properly on Lattice FPGAs</li>
+</ul>
+</li>
+<li>Nanoprocessors
+<ul>
+<li>A number of applications would benefit from the hardware-reuse of a processor, but do not need/want
+the overhead of a full blown uC (like a RISC-V core).  For those, it would be nice to be able to
+define state machines with reusable ALUs and other micro-processor-like features.</li>
+</ul>
+</li>
+<li>Communication Bridges
+<ul>
+<li>FPGAs with buttons and LEDs are definitely cool.  But even better are FPGAs that can serve as low-drama, high speed compute
+engines.  To do that, you need to get data in and out of them at speed.  USB is one choice.  But what about Ethernet, PCI-e, etc?</li>
+</ul>
+</li>
+<li>Backend
+<ul>
+<li>I have run into a depressing number of bugs in commercial toolchains.  So I would like to start to move synthesis into
+RustHDL itself.  Yeah - I'm nuts.</li>
+</ul>
+</li>
+<li>Place-and-route
+<ul>
+<li><a href="https://github.com/YosysHQ/nextpnr">NextPNR</a> is awesome.  I ran into problems trying to use it in one of my larger designs.  I'm not sure what to do about that.</li>
+</ul>
+</li>
+</ul>
 <h1 id="references">References</h1>
 <p>RustHDL was inspired by and borrows from the following awesome projects!  They are listed in
 no particular order...</p>
@@ -266,7 +344,7 @@ started writing tooling to manipulate Lucid using Rust, and then realized that i
 me to just use Rust itself.  But there is some great stuff on their website, and their book is excellent.</li>
 <li>AlchitryLabs is a n IDE from <a href="https://www.alchitry.com">alchitry</a> that supports the LucidHDL.  They open sourced 
 it and it is an impressive piece of software.</li>
-<li>For Python fans, <a href="myhdl.org">MyHDL</a> is a Python based approach to generating HDL.  If you consider yourself a Python person, check it out.  After I left Verilog, I first rewrote a fair chunk of firmware using MyHDL and Python.  In the end, it wasn't for me, but many of the ideas are very cleanly expressed.</li>
+<li>For Python fans, <a href="https://rust-hdl.org/myhdl.org">MyHDL</a> is a Python based approach to generating HDL.  If you consider yourself a Python person, check it out.  After I left Verilog, I first rewrote a fair chunk of firmware using MyHDL and Python.  In the end, it wasn't for me, but many of the ideas are very cleanly expressed.</li>
 <li><em>The</em> open source toolchain that started it all is <a href="https://clifford.at/icestorm">IceStorm</a> Open Source tool chain for the <code>iCE 40</code> FPGA, and an incredibly powerful concept.  In particular, Claire's work demonstrated a software-like path for handling FPGAs that was critical to a number of open source FPGA-centric projects. </li>
 <li><a href="https://github.com/YosysHQ/yosys">YoSys</a> is the Verilog synthesis suite used by [RustHDL] to 
 process generated Verilog and check a design for potential errors (static analysis).</li>
