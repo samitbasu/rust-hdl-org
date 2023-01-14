@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Changelog | RustHDL - Write FPGA Firmware using the Rust Programming Language! </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link rel="icon" type="image/png" href="/favicon.ico">
+    
+    <style>
+    :root {
+        /* Primary theme color */
+        --primary-color: #FED43F;
+        /* Primary theme text color */
+        --primary-text-color: #543631;
+        /* Primary theme link color */
+        --primary-link-color: #F9BB2D;
+        /* Secondary color: the background body color */
+        --secondary-color: #fcfaf6;
+        --secondary-text-color: #303030;
+        /* Highlight text color of table of content */
+        --toc-highlight-text-color: #d46e13;
+    }
+</style>
+    <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/normalize.css">
+    <link rel="stylesheet" href="https://rust-hdl.org/juice.css">
+    
+    
+</head>
+
+<body>
+    
+<header class="box-shadow">
+    
+
+<a href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;">
+    <div class="logo">
+        <img src="https://rust-hdl.org/pcbferris.svg" alt="logo">
+        RustHDL
+    </div>
+</a>
+
+<nav>
+    
+    <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;references&#x2F;">References</a>
+    
+    <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;changelog&#x2F;">Changelog</a>
+    
+    <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;rust-hdl.org&#x2F;guide&#x2F;">The Guide</a>
+    
+    
+        
+        <a class="nav-item subtitle-text" href="https:&#x2F;&#x2F;github.com&#x2F;samitbasu&#x2F;rust-hdl">Github</a>
+        
+    
+</nav>
+
+</header>
+
+
+    <main>
+        
+        
+        
+        
+        
+        <div class="toc">
+            <div class="toc-sticky">
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-43-0-2023-jan-7">v0.43.0 - 2023-Jan-7</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-42-0-2023-jan-2">v0.42.0 - 2023-Jan-2</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-41-0-2022-dec-2">v0.41.0 - 2022-Dec-2</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-40-0-2022-dec-2">v0.40.0 - 2022-Dec-2</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-39-0-2022-nov-30">v0.39.0 - 2022-Nov-30</a>
+                </div>
+                
+                
+                <div class="toc-item">
+                    <a class="subtext" href="https://rust-hdl.org/changelog/#v0-38-0-2022-sep-14">v0.38.0 - 2022-Sep-14</a>
+                </div>
+                
+                
+            </div>
+        </div>
+        
+        
+
+        <div class="content text">
+            
+<div class="heading-text">Changelog</div>
+<h1 id="v0-43-0-2023-jan-7">v0.43.0 - 2023-Jan-7</h1>
+<ul>
+<li>Add support for right and left shifts by different bit width amounts.  For example,
+the following construct used to not be allowed, since RustHDL would insist that the
+two arguments to both the left and right shift operators be the same bitwidth.</li>
+</ul>
+<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicBlock)]
+struct Foo {
+    pub sig1: Signal&lt;In, Bits&lt;4&gt;&gt;,
+    pub sig2: Signal&lt;In, Bits&lt;2&gt;&gt;,
+    pub sig3: Signal&lt;Out, Bits&lt;4&gt;&gt;,
+}
+
+impl Logic for Foo {
+    #[hdl_gen]
+    fn update(&amp;mut self) {
+        self.sig3.next = self.sig1.val() &lt;&lt; self.sig2.val(); &#x2F;&#x2F; &lt;-- used to require a bitcast - now it doesn&#x27;t
+    }
+}
+</code></pre>
+<h1 id="v0-42-0-2023-jan-2">v0.42.0 - 2023-Jan-2</h1>
+<ul>
+<li>Support for comparison operations on signed arguments.  Support for signed quantities is
+still improving in RustHDL.  Now you can do:</li>
+</ul>
+<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicBlock)]
+struct Foo {
+    pub sig1: Signal&lt;In, Signed&lt;4&gt;&gt;,
+    pub sig2: Signal&lt;In, Signed&lt;4&gt;&gt;,
+    pub sig3: Signal&lt;Out, Bit&gt;,
+}
+
+impl Logic for Foo {
+    #[hdl_gen]
+    fn update(&amp;mut self) {
+        self.sig3.next = self.sig1.val() &lt; self.sig2.val(); &#x2F;&#x2F; &lt;-- used to not work at all.  Now it works
+    }
+}
+</code></pre>
+<p>The generated Verilog should have the proper <code>$signed</code> and <code>$unsigned</code> decorations, but it's good to double
+check the output to make sure it looks reasonable.</p>
+<h1 id="v0-41-0-2022-dec-2">v0.41.0 - 2022-Dec-2</h1>
+<p>No changes.</p>
+<h1 id="v0-40-0-2022-dec-2">v0.40.0 - 2022-Dec-2</h1>
+<ul>
+<li>Refactored the I2C bus to make it slightly easier to use.  Now the bus looks like this:</li>
+</ul>
+<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicInterface, Default)]
+#[join = &quot;I2CBusReceiver&quot;]
+pub struct I2CBusDriver {
+    pub sda: OpenDrainDriver,
+    pub scl: OpenDrainDriver,
+}
+</code></pre>
+<p>The <code>OpenDrainDriver</code> is also a bus definition:</p>
+<pre data-lang="rust" class="language-rust "><code class="language-rust" data-lang="rust">#[derive(LogicInterface, Default)]
+#[join = &quot;OpenDrainReceiver&quot;]
+pub struct OpenDrainDriver {
+    pub drive_low: Signal&lt;Out, Bit&gt;,
+    pub line_state: Signal&lt;In, Bit&gt;,
+}
+</code></pre>
+<p>This constrains (through the types) the operations that can be legally completed on an open drain pin.</p>
+<h1 id="v0-39-0-2022-nov-30">v0.39.0 - 2022-Nov-30</h1>
+<ul>
+<li>There are some issues with synthesis tools that do not properly route analog signals into the design (no names...)
+So to be safe you should move your tristate buffers as close to the top of your design hierarchy as possible.<br />
+This release removed the I2C tristate buffers from the controller and moved them out.</li>
+</ul>
+<h1 id="v0-38-0-2022-sep-14">v0.38.0 - 2022-Sep-14</h1>
+<ul>
+<li>Clean up some of the doc tests, and remove some debug statements.  Update the homepage in the Cargo manifest to 
+point to the <a href="https://www.rust-hdl.org">website</a>.</li>
+</ul>
+
+
+        </div>
+
+        
+        
+    </main>
+
+    
+    <footer>
+        <small class="subtext">
+            <a href="https://huhu.io">Huhu.io</a> © 2021
+        </small>
+    </footer>
+    
+</body>
+<script>
+    function highlightNav(heading) {
+        let pathname = location.pathname;
+        document.querySelectorAll(".toc a").forEach((item) => {
+            item.classList.remove("active");
+        });
+        document.querySelector(".toc a[href$='" + pathname + "#" + heading + "']").classList.add("active");
+    }
+
+    let currentHeading = "";
+    window.onscroll = function () {
+        let h = document.querySelectorAll("h1,h2,h3,h4,h5,h6");
+        let elementArr = [];
+
+        h.forEach(item => {
+            if (item.id !== "") {
+                elementArr[item.id] = item.getBoundingClientRect().top;
+            }
+        });
+        elementArr.sort();
+        for (let key in elementArr) {
+            if (!elementArr.hasOwnProperty(key)) {
+                continue;
+            }
+            if (elementArr[key] > 0 && elementArr[key] < 300) {
+                if (currentHeading !== key) {
+                    highlightNav(key);
+                    currentHeading = key;
+                }
+                break;
+            }
+        }
+    }
+</script>
+
+</html>

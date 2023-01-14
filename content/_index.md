@@ -123,7 +123,9 @@ Here is a zoom in showing the pulse to the LED
 - The [documentation](https://docs.rs/rust-hdl/latest/rust_hdl) for RustHDL is hosted on `doc.rs`.
 - The crate is hosted on [crates.io](https://crates.io/crates/rust-hdl).
 
+# Change Log
 
+You can go to the [changelog](@/changelog.md) page to see what changes are happening.
 
 # References
 
