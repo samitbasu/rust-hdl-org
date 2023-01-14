@@ -144,9 +144,9 @@ I have the following boards on hand (or used to), so I can do a basic tutorial o
     still reasonably priced for an FPGA board.
     * Orange Crab - this is a fun board based on the Lattice ECP5, and includes a LPDDR and a super-small form factor.  It can also be targetted with
     open source tools.
-    * [OpalKelly](www.opalkelly.com) XEM6010 - an oldie, but great FPGA SOM based on the workhorse Spartan-6 from Xilinx.  The toolchain is way deprecated.
+    * [OpalKelly](https://www.opalkelly.com) XEM6010 - an oldie, but great FPGA SOM based on the workhorse Spartan-6 from Xilinx.  The toolchain is way deprecated.
     I think this thing is great, but you can't get it anymore.  So...
-    * [OpalKelly](www.opalkelly.com) XEM7010 - the modern version of the XEM6010.  Includes an Artix-7 and DDR.  RustHDL wraps the `FrontPanel` API to
+    * [OpalKelly](https://www.opalkelly.com) XEM7010 - the modern version of the XEM6010.  Includes an Artix-7 and DDR.  RustHDL wraps the `FrontPanel` API to
     make working with OpalKelly modules easier to use.
     * Lattice ECP5 development board
     * More...?
