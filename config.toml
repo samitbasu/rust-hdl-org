@@ -19,7 +19,7 @@ theme = "juice"
 [extra]
 # Put all your custom variables here
 juice_logo_name = "RustHDL"
-juice_logo_path = "cuddlyferris.svg"
+juice_logo_path = "pcbferris.svg"
 juice_extra_menu = [
     { title = "Github", link = "https://github.com/samitbasu/rust-hdl" }
 ]

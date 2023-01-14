@@ -11,6 +11,7 @@
     {% endblock favicon %}
     {% include "_variables.html" %}
     <link href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans:400,500,600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/normalize.css">
     <link rel="stylesheet" href="{{ get_url(path="juice.css") }}">
@@ -33,13 +34,14 @@
                 Write FPGA Firmware In Rust!
             </h1>
             <h3 class="title-text">
-                <b>RustHDL</b> allows you to write strongly typed firmware for FPGAs using the Rust Programming Language.
+                <b>RustHDL</b> allows you to write strongly typed firmware for FPGAs using the Rust Programming
+                Language.
             </h3>
             <div>
-                <a class="github-button" href="https://github.com/samitbasu/rust-hdl" data-size="large" data-show-count="true"
-                   aria-label="Star RustHDL on GitHub">Star</a>
+                <a class="github-button" href="https://github.com/samitbasu/rust-hdl" data-size="large"
+                    data-show-count="true" aria-label="Star RustHDL on GitHub">Star</a>
                 <a class="github-button" href="https://github.com/samitbasu/rust-hdl/fork" data-size="large"
-                   data-show-count="true" aria-label="Fork RustHDL on GitHub">Fork</a>
+                    data-show-count="true" aria-label="Fork RustHDL on GitHub">Fork</a>
             </div>
         </section>
         <!-- <img class="hero-image" style="width: 50%" src="{{ get_url(path="hero.png") }}"> -->
@@ -52,6 +54,7 @@
             .hero section {
                 padding: 0 5rem;
             }
+
             @media screen and (max-width: 768px) {
                 .hero section {
                     padding: 0 2rem;

@@ -20,11 +20,11 @@ ul {
   margin-top: 0.5rem;
 }
 
-ul > li {
+ul>li {
   padding: 0.3rem 0;
 }
 
-p > img {
+p>img {
   width: 100%;
   height: auto;
 }
@@ -38,7 +38,7 @@ header {
 }
 
 .logo {
-  font-family: "Alfa Slab One", serif;
+  font-family: "Montserrat", sans-serif;
   font-size: 32px;
   color: var(--primary-text-color);
   display: flex;
@@ -102,21 +102,22 @@ header {
     cursor: pointer;
     color: antiquewhite;
   }
+
   color: antiquewhite;
   border-left: none;
 
 
   .heading-text {
-    color:antiquewhite;
+    color: antiquewhite;
     border-left: none;
   }
-  
+
   .title-text {
     color: antiquewhite;
     border-left: none;
   }
- 
-  
+
+
 }
 
 main {
@@ -134,7 +135,8 @@ main {
     color: #424242;
   }
 
-  .toc-item a, .toc-item-child a {
+  .toc-item a,
+  .toc-item-child a {
     color: var(--secondary-text-color);
 
     &:hover {
@@ -143,7 +145,8 @@ main {
     }
   }
 
-  .toc-item a.active, .toc-item-child a.active {
+  .toc-item a.active,
+  .toc-item-child a.active {
     color: var(--toc-highlight-text-color);
   }
 
@@ -226,7 +229,8 @@ footer {
     padding: 0;
   }
 
-  .explore-more, .toc {
+  .explore-more,
+  .toc {
     display: none;
   }
 
