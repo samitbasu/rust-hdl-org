@@ -4,6 +4,14 @@ description = "Changelog"
 weight = 2
 +++
 
+# v0.44.0
+
+- A bunch of internal fixes for dealing with some stale crates on crates.io that
+I couldn't do anything about.  So I renamed the internal crates and split them
+up into `rust_hdl_lib_*`.  As an end-user it should be transparent, and ideally
+you only need to deal with the `rust-hdl` top-level crate unless you need a 
+BSP for a specific FPGA board.
+
 # v0.43.0
 
 - Add support for right and left shifts by different bit width amounts.  For example,
