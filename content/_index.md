@@ -122,6 +122,7 @@ Here is a zoom in showing the pulse to the LED
 - If you don't know what an FPGA is, head over to the [guide](@/guide/index.md).
 - The [documentation](https://docs.rs/rust-hdl/latest/rust_hdl) for RustHDL is hosted on `doc.rs`.
 - The crate is hosted on [crates.io](https://crates.io/crates/rust-hdl).
+- Join the [RustHDL Discord](https://discord.gg/wVrMBSVJ) server.
 
 # Change Log
 
